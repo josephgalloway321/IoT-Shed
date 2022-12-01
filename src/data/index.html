@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script src="script.js"></script>
+
+<body>
+    <div class="windowOne">
+        <center>
+            <h1>Battery Level</h1>
+            <p>Battery Status: <label id="batterySensorValue">-</label>%</p> <br>
+
+        </center>
+    </div>
+    <div class="windowTwo">
+        <center>
+            <h1>Ceiling Slits</h1>
+            <p>Slit Status: <label id="limitSwitchValue">-</label></p>
+            <p>Rain Sensor Status: <label id="rainSensorValue">-</label></p>
+            <p>Air Compressor Status: <label id="showAirCompressorState">-</label></p>
+            <p>Release Valve Status: <label id="showReleaseValveState">-</label></p>
+            <button id="toggleAirCompressorButton" class="button redButton" onclick="onAirCompressorButtonPress()" disabled>Air Compressor Toggle</button>
+            <button id="toggleReleaseValveButton" class="button redButton" onclick="onReleaseValveButtonPress()" disabled>Release Valve Toggle</button>
+        </center>
+    </div>
+    <div class="windowThree">
+        <center>
+            <h1>Temperature</h1>
+            <p>Outdoor Temperature: <label id="outdoorTempValue">-</label> &#8457</p>
+            <p>Indoor Temperature: <label id="indoorTempValue">-</label> &#8457</p>
+            <p>Fan Status: <label id="showFanState">-</label></p>
+            <button id="toggleFanButton" class="button greenButton" onclick="onFanButtonPress()" disabled>Fan Toggle</button>
+        </center>
+    </div>
+    <div class="windowFour">
+        <center>
+            <h1>Occupancy</h1>
+            <p>PIR Sensor Status: <label id="pirValue">-</label></p>
+            <p>LED Status: <label id="showLedState">-</label></p>
+            <button id="toggleLedButton" class="button blueButton" onclick="onLedButtonPress()" disabled>LED Toggle</button>
+        </center>
+    </div>
+    <div id="gui-frame"></div>
+</body>
+</html>
