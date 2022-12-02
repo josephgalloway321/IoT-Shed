@@ -1,4 +1,4 @@
-var url = "ws://192.168.102.174:1337/";
+var url = "ws://192.168.86.120:1337/";
 
 // This is called when the page finishes loading
 function init(){

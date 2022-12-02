@@ -10,10 +10,12 @@
 // Provide login information for WiFi
 //const char* ssid = "MERCURY 4965";
 //const char* password = "s29M86+5";
-const char* ssid = "earth";
-const char* password = "mypassword";
+//const char* ssid = "earth";
+//const char* password = "mypassword";
 //const char* ssid = "VENUS 4277";
 //const char* password = "C11b^535";
+const char* ssid = "GallowayWifi";
+const char* password = "PcpmRq9C@Q";
 
 // Assign ports
 const int dns_port = 53;
@@ -263,10 +265,10 @@ void connectToWifi(){
 // Function for Static IP Address
 // Don't forget to update the url (first line) in script.js
 void connectToWifiStatic(){
-  IPAddress staticIP(192, 168, 102, 174);
+  IPAddress staticIP(192, 168, 86, 120);
   IPAddress subnet(255, 255, 255, 0);
-  IPAddress gateway(192, 168, 102, 229);
-  IPAddress dns(192, 168, 102, 229);
+  IPAddress gateway(192, 168, 86, 1);
+  IPAddress dns(192, 168, 86, 1);
 
   // See if parameters are available/correct
   if (WiFi.config(staticIP, gateway, subnet, dns) == false) {
@@ -354,7 +356,7 @@ void setup(){
   Serial.println("Found INA260 chip");
   */
 
-  // Start up the library
+  // Start up the library for temp sensors
   sensors.begin();
 
   // Setup temp. sensors
@@ -421,19 +423,16 @@ void loop(){
   
 
       // Get indoor/outside temperature sensor data
-      /*
       sensors.requestTemperatures();    // Issue global temp. request to all devices on bus
       indoor_temp_state = sensors.getTempC(insideThermometer);    // Get indoor temp. sensor data
       indoor_temp_state = DallasTemperature::toFahrenheit(indoor_temp_state);    // Convert from C to F
       data += String(indoor_temp_state) + ",";  
-      */
-      data += "0,"; 
-      /* 
+      //data += "0,"; 
+
       outdoor_temp_state = sensors.getTempC(outsideThermometer);    // Get outdoor temp. sensor data
       outdoor_temp_state = DallasTemperature::toFahrenheit(outdoor_temp_state);    // Convert from C to F
       data += String(outdoor_temp_state) + ",";
-      */
-      data += "0,";
+      //data += "0,";
 
       // Bring in cooler air from outside w/ fan & ceiling slits
       if ((indoor_temp_state - outdoor_temp_state) >= (temp_differential) && fan_state == 0 && fan_state_pause == 0){
@@ -482,12 +481,15 @@ void loop(){
       // Will override toggle button commands
       // TODO: Test logic w/ sensor
       pir_state = digitalRead(pir_pin);
+      /*
       if (pir_state == 0){
         data += "OFF,";
       }
       else{
         data += "ON,";
       }
+      */
+      data += "OFF,";
       // Temporarily commented out to keep testing relay
       //digitalWrite(led_pin, pir_state);
 
