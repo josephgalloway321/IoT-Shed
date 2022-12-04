@@ -5,7 +5,6 @@
 #include <Wire.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-#include <Adafruit_INA260.h>
 
 // Provide login information for WiFi
 //const char* ssid = "MERCURY 4965";
@@ -14,8 +13,10 @@
 //const char* password = "mypassword";
 //const char* ssid = "VENUS 4277";
 //const char* password = "C11b^535";
-const char* ssid = "GallowayWifi";
-const char* password = "PcpmRq9C@Q";
+//const char* ssid = "GallowayWifi";
+//const char* password = "PcpmRq9C@Q";
+const char* ssid = "NETGEAR49";
+const char* password = "kindoboe238";
 
 // Assign ports
 const int dns_port = 53;
@@ -30,11 +31,9 @@ WebSocketsServer webSocket = WebSocketsServer(ws_port);
 const int led_pin = 18;  // K3 Relay
 const int fan_pin = 19;    // K2 Relay
 const int air_compressor_pin = 21;    // K1 Relay
-const int release_valve_pin = 22;
+const int release_valve_pin = 5;    // K4 Relay
 const int temp_pin = 23;    // One pin for bus data from temp. sensors
 const int pir_pin = 26;
-const int battery_sensor_sda_pin = 32;
-const int battery_sensor_scl_pin = 35;
 const int rain_sensor_pin = 36;
 const int ceiling_slit_pin = 33;
 
@@ -48,7 +47,7 @@ int air_compressor_state = 0;    // State of air compressor to send as a message
 int closing_ceiling_procedure = 0;    // State of ceiling slit closing procedure
 int opening_ceiling_procedure = 0;    // State of ceiling slit opening procedure
 int release_valve_state = 0;    // State of release valve to send as a message to client
-int ceiling_slit_state = 0;    // Open == 1, Closed == 0
+int ceiling_slit_state = 0;    // Open == 0, Closed == 1
 float indoor_temp_state = 0;
 float outdoor_temp_state = 0;
 int pir_state = 0;
@@ -62,13 +61,13 @@ const float temp_differential = 5.0;    // degrees F
 unsigned long lastTime = 0;
 unsigned long timerDelay = (1000)*0.25;    // Timer delay for sending all sensor & actuator data 
 unsigned long lastTimeOpenCeilingSlits = 0;
-unsigned long timerDelayOpenCeilingSlits = (1000)*5;    // Time to close ceiling slits
+unsigned long timerDelayOpenCeilingSlits = (1000)*25;    // Time to open ceiling slits
 unsigned long lastTimeCloseCeilingSlits = 0;
-unsigned long timerDelayCloseCeilingSlits = (1000)*5;    // Time to open ceiling slits
+unsigned long timerDelayCloseCeilingSlits = (1000)*10;    // Time to close ceiling slits
 unsigned long lastTimeFan = 0;
-unsigned long timerDelayFan = (1000)*10;    // Keep fan on for this amount of time
+unsigned long timerDelayFan = (1000)*5;    // Keep fan on for this amount of time
 unsigned long lastTimeFanPause = 0;
-unsigned long timerDelayFanPause = (1000)*10;    // Pause the fan for this amount of time
+unsigned long timerDelayFanPause = (1000)*15;    // Pause the fan for this amount of time
 
 // Setup for temp. sensors
 OneWire oneWire(temp_pin);    // Setup OneWire instance to communicate with any OneWire devices
@@ -265,10 +264,10 @@ void connectToWifi(){
 // Function for Static IP Address
 // Don't forget to update the url (first line) in script.js
 void connectToWifiStatic(){
-  IPAddress staticIP(192, 168, 86, 120);
+  IPAddress staticIP(192, 168, 1, 2);
   IPAddress subnet(255, 255, 255, 0);
-  IPAddress gateway(192, 168, 86, 1);
-  IPAddress dns(192, 168, 86, 1);
+  IPAddress gateway(192, 168, 1, 1);
+  IPAddress dns(192, 168, 1, 1);
 
   // See if parameters are available/correct
   if (WiFi.config(staticIP, gateway, subnet, dns) == false) {
@@ -326,7 +325,6 @@ void setup(){
   pinMode(pir_pin, INPUT);
   pinMode(rain_sensor_pin, INPUT);    // Needs an external pull-up resistor
   pinMode(ceiling_slit_pin, INPUT);    // Needs an external pull-up resistor
-  Wire.begin(battery_sensor_sda_pin, battery_sensor_scl_pin);    // Assign sda & scl pins for battery sensor
 
   // FYI - HIGH and LOW are switched only for onboard LED in ESP32
   digitalWrite(led_pin, LOW);    
@@ -343,18 +341,6 @@ void setup(){
     Serial.println("Error mounting SPIFFS");
     while(1);
   }
-
-  // Create ina260 object for power sensor
-  Adafruit_INA260 ina260 = Adafruit_INA260();
-
-  /*
-  // Code when ina260 is plugged in 
-  if (!ina260.begin()) {
-    Serial.println("Couldn't find INA260 chip");
-    while (1);
-  }
-  Serial.println("Found INA260 chip");
-  */
 
   // Start up the library for temp sensors
   sensors.begin();
@@ -385,7 +371,7 @@ void loop(){
 
       // Get limit swtich status
       ceiling_slit_state = digitalRead(ceiling_slit_pin);
-      if (ceiling_slit_state == 1){
+      if (ceiling_slit_state == 0){
         data += "OPEN,";
       }
       else{
@@ -399,25 +385,25 @@ void loop(){
       if (rain_sensor_state == 1){    // Sensor does NOT detect rain (Opposite because of pull-up resistor)
         data += "NO RAIN,";
       }
-      if (rain_sensor_state == 0 && closing_ceiling_procedure == 0 && ceiling_slit_state == 1){
+      if (rain_sensor_state == 0 && closing_ceiling_procedure == 0 && ceiling_slit_state == 0){
         // Currently raining, close ceiling slits
         data += "RAIN,";
         Serial.println("Begin closing ceiling slits");
-        digitalWrite(air_compressor_pin, 1);
+        digitalWrite(release_valve_pin, 1);
         lastTimeCloseCeilingSlits = millis();
         closing_ceiling_procedure = 1;    // Signal beginning to close ceiling slits
       }
       // Timer for closing ceiling slits
-      else if (air_compressor_state == 1 && closing_ceiling_procedure == 1){
+      else if (release_valve_state == 1 && closing_ceiling_procedure == 1){
         data += "RAIN,";
         if ((millis() - lastTimeCloseCeilingSlits) > timerDelayCloseCeilingSlits) {
-          digitalWrite(air_compressor_pin, 0);
+          digitalWrite(release_valve_pin, 0);
           closing_ceiling_procedure = 0;    // Signal finished closing ceiling
           Serial.println("Finished closing ceiling slits");
         }
       }
       // It's raining, but the ceiling slits are already closed
-      else if (rain_sensor_state == 0 && ceiling_slit_state == 0){
+      else if (rain_sensor_state == 0 && ceiling_slit_state == 1){
         data += "RAIN,";
       }
   
@@ -442,9 +428,9 @@ void loop(){
         fan_state_cool = 1;    // Signal to begin cooling phase using fan
         lastTimeFan = millis();    // Begin timer for fan shut off then pause
         // If ceiling slits are closed & if it's not raining, then open ceiling slits
-        if (ceiling_slit_state == 0 && rain_sensor_state == 1){
+        if (ceiling_slit_state == 1 && rain_sensor_state == 1){
           Serial.println("Begin opening ceiling slits");
-          digitalWrite(release_valve_pin, 1);
+          digitalWrite(air_compressor_pin, 1);
           lastTimeOpenCeilingSlits = millis();
           opening_ceiling_procedure = 1;    // Signal beginning to close ceiling slits
         }
@@ -467,9 +453,9 @@ void loop(){
         }
       }
       // Timer for opening ceiling slits
-      if (release_valve_state == 1 && opening_ceiling_procedure == 1){
+      if (air_compressor_state == 1 && opening_ceiling_procedure == 1){
         if ((millis() - lastTimeOpenCeilingSlits) > timerDelayOpenCeilingSlits) {
-          digitalWrite(release_valve_pin, 0);
+          digitalWrite(air_compressor_pin, 0);
           opening_ceiling_procedure = 0;    // Signal finished opening ceiling
           Serial.println("Finished opening ceiling slits");
         }
