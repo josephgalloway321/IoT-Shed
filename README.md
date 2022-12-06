@@ -140,10 +140,12 @@ Save the main.ino file into a folder labeled "main". Within the main folder, cre
 The next step is to get the wifi information needed to make a static IP address. In the main.ino file, Write in your wifi's SSID and password into the ssid and password variables at the top of the file. Run the program and open the serial monitor. You may need to press the reset button on the ESP32 Relay Board. After the program finishes connecting, the IP Address, Subnet Mask, Gateway IP, and DNS IP will be displayed. Please copy this information to the same variables at the top of the connectToWifiStatic() function. Copy the IP Address and rewrite it into the first line found in the script.js file.
 
 Now, switch the program so it connects the static IP Address you recorded everytime you reset the program. Navigate to the setup function, uncomment the connectToWifiStatic() function, and comment the connectToWifi() function. Save each file, click on "tools", then click on "ESP32 Sketch Data Upload" to update the website information. Run the main.ino file in the Arduino IDE. Open the serial monitor to make sure the ESP32 Relay Board connects correctly. Open a brower and type in the static IP Address shown in the serial monitor. You should see the website pop up with correct sensor information. 
+
 ![Shed](Images/website_design.png)
 
 ### Enclosure
 The enclosure of the relay board is made out of acrylic and cut using a laser cutter provided by the Fab Lab at Arizona State University. The enclosure file, labeled board_enclosure.pdf, can be found in the additional_documentation folder in this repository.
+
 ![Shed](Images/relay_board_enclosure/laser_cutter.jpg)
 ![Shed](Images/relay_board_enclosure/laser_cutter_II.jpg)
 ![Shed](Images/relay_board_enclosure/enclosure.jpg)
