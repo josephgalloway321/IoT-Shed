@@ -457,7 +457,6 @@ void loop(){
 
       // Get PIR sensor data
       // Will override toggle button commands
-      // TODO: Test logic w/ sensor
       pir_state = digitalRead(pir_pin);
       /*
       if (pir_state == 0){
@@ -473,8 +472,6 @@ void loop(){
 
 
       // Get battery level data
-      // TODO: Assemble/Solder sensor then write logic 
-      // TODO: Test w/ sensor
       battery_sensor_state = 0;
       data += String(battery_sensor_state) + ",";
 
