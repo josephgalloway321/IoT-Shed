@@ -7,14 +7,6 @@
 #include <DallasTemperature.h>
 
 // Provide login information for WiFi
-//const char* ssid = "MERCURY 4965";
-//const char* password = "s29M86+5";
-//const char* ssid = "earth";
-//const char* password = "mypassword";
-//const char* ssid = "VENUS 4277";
-//const char* password = "C11b^535";
-//const char* ssid = "GallowayWifi";
-//const char* password = "PcpmRq9C@Q";
 const char* ssid = "NETGEAR49";
 const char* password = "kindoboe238";
 
@@ -354,8 +346,8 @@ void setup(){
   sensors.setResolution(outsideThermometer, temp_precision);
 
 
-  //connectToWifi();
-  connectToWifiStatic();
+  connectToWifi();
+  //connectToWifiStatic();
 }
 
 
