@@ -68,7 +68,7 @@ When the same temperature differential happens, the fan will turn on for a speci
 ### Ceiling Control
 As explained in the previous section, the ceiling slits are opening using an air compressor. When rain is detected by the rain sensor, the same slits are closed using a release valve. The processor for closing the slits is about ten seconds.
 
-There is a pneumatic system made up of pipes used to control the air flow into and out of the pnemuatic actuators. 
+There is a pneumatic system made up of pipes used to control the air flow into and out of the pnemuatic actuators. An image of what I used is shown below. However, this is not necessary. All that is needed is the tubing shown in the bill of materials. This is for connecting the air compressor and the release valve to the pneumatic actuators.
 
 ![Shed](Images/pneumatic_valves.jpg)
 
@@ -96,9 +96,9 @@ The limit switch needs a way to stay fixed under the ceiling slits so it can tur
 ![Shed](Images/limit_switch.jpg)
 ![Shed](Images/limit_switch_two.jpg)
 
-This device is made up of two 2"x4" blocks, four wood screws, two nails, and a thin piece of sheet metal to extend the limit switch lever. All of these materials are in the bill of materials. Please see the limit_switch_setup.md in the additional_documentation folder for more instructions if you want to use this setup.
+This device is made up of two 2"x4" blocks, four wood screws, two nails, and a thin piece of sheet metal to extend the limit switch lever. All of these materials are in the bill of materials. Screw the two blocks at a right angle and to a fixed part of the shed ceiling. Use two nails to fix the limit switch. Cut and glue a thin metal strip to the limit switch. Use two spade connectors to electrically connect to the limit switch.
 
-The rain sensor needs to be placed at an angle so water will runoff of it and not collect onto the surface. All of the materials shown are in the bill of materials. Please see the rain_sensor_setup.md in the additional_documentation folder for more instructions if you want to use this setup.
+The rain sensor needs to be placed at an angle so water will runoff of it and not collect onto the surface. All of the materials shown are in the bill of materials. Four screws were driven into the metal bracket and shed wall. The rain sensor was secured using metal wire. Test that water will run off the roof onto the sensor before permenantly installing.
 
 ![Shed](Images/rain_sensor.jpg)
 ![Shed](Images/rain_sensor_two.jpg)
@@ -157,7 +157,7 @@ The circuitry is currently not enclosed and exposed to the elements. I plan on m
 | [Battery](https://www.walmart.com/ip/EverStart-Value-Lead-Acid-Automotive-Battery-Group-Size-26-12-Volt-525-CCA/482504063?wmlspartner=wlpa&selectedSellerId=0&wl13=2515&adid=22222222277482504063_117755028669_12420145346&wmlspartner=wmtlabs&wl0=&wl1=g&wl2=c&wl3=501107745824&wl4=pla-294505072980&wl5=9060377&wl6=&wl7=&wl8=&wl9=pla&wl10=8175035&wl11=local&wl12=482504063&wl13=2515&veh=sem_LIA&gclid=CjwKCAiA9qKbBhAzEiwAS4yeDbAxHoxaAYIXZ1iEBbvH7YLKysCqkxCNjpezNFZtTs6tq_nxSTrQ8BoC20UQAvD_BwE&gclsrc=aw.ds) | $60 |
 | [Wire Strippers](https://www.amazon.com/Klein-Tools-Cutter-Stripper-Stranded/dp/B00080DPNQ/ref=sr_1_7?crid=2NRR7LBD7TSQ8&keywords=wire+stripper&qid=1670365592&s=industrial&sprefix=wire+stripper%2Cindustrial%2C123&sr=1-7) | $20 |
 | [Spade Connectors](https://www.amazon.com/TICONN-Disconnect-Connectors-Electrical-Assortment/dp/B08BZ8BLJN/ref=sr_1_5?crid=4FGESIFJVHCX&keywords=wire+connectors&qid=1670365634&s=industrial&sprefix=wire+connectors%2Cindustrial%2C168&sr=1-5) | $20 |
-| [Wire Connectors](https://www.amazon.com/AIRIC-Connectors-Waterproof-Automotive-Electrical/dp/B08NPLJ4BL/ref=sr_1_11?crid=4FGESIFJVHCX&keywords=wire+connectors&qid=1670365699&s=industrial&sprefix=wire+connectors%2Cindustrial%2C168&sr=1-11) | $10 |
+| [Wire Connectors & Crimpers](https://www.amazon.com/haisstronica-Connectors-Electrical-Waterproof-Removable/dp/B09GLKX7ZX/ref=sr_1_17_sspa?keywords=butt+connectors+crimp&qid=1670367460&s=industrial&sprefix=butt+connector%2Cindustrial%2C142&sr=1-17-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExWTRQOTdXUDYyRTVXJmVuY3J5cHRlZElkPUEwOTUwODMxVVFIVUZXR0Y0OVpQJmVuY3J5cHRlZEFkSWQ9QTA4ODU3MzBIWUhDSFU5WDEwT1Ymd2lkZ2V0TmFtZT1zcF9tdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl) | $55 |
 | [Wood Screws](https://www.amazon.com/HongWay-Phillips-Assortment-Tapping-Drywall/dp/B08CZJK8SW/ref=sr_1_1_sspa?crid=1KCK4M591MWRL&keywords=assortment+of+wood+screws&qid=1670365757&s=industrial&sprefix=assortment+of+woodscrews%2Cindustrial%2C120&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFONUFDMDE1MUJCRkwmZW5jcnlwdGVkSWQ9QTA2NTE0NzQyM0YyNkVPQU1HVjkxJmVuY3J5cHRlZEFkSWQ9QTA1MzA1MzcySUZZTjNCMDRMVEJCJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==) | $8 |
 | [Wood Nails](https://www.amazon.com/Premium-Hardware-Assortment-Maximum-Galvanized/dp/B089FLMFPB/ref=sr_1_4?crid=3BZGRNXBZ7HHZ&keywords=assortment+of+wood+nails&qid=1670365787&s=industrial&sprefix=assortment+of+wood+nails%2Cindustrial%2C144&sr=1-4) | $7 |
 | [Drill](https://www.amazon.com/BLACK-DECKER-Cordless-Driver-BDCDD12C/dp/B0111N8L7I/ref=sr_1_7?crid=22TRCF527S90C&keywords=drill&qid=1670365810&s=industrial&sprefix=drill%2Cindustrial%2C148&sr=1-7) | $30 |
@@ -177,9 +177,11 @@ The circuitry is currently not enclosed and exposed to the elements. I plan on m
 | [ESP32 w/ Relays](https://www.amazon.com/LILYGO-T-Relay-Wireless-Development-Control/dp/B09XX1HL9Z/ref=sr_1_1_sspa?crid=T5A2ZOSAD13Z&keywords=esp32+relay+board&qid=1667861270&sprefix=esp32+relay+boar%2Caps%2C116&sr=8-1-spons&psc=1) | $20 |
 | [TTGO T-U2T USB to TTL](https://www.walmart.com/ip/OOKWE-LILYGO-TTGO-T-U2T-USB-To-TTL-Serial-Development-Board-Open-Source-Module/1405355347) | $17 |
 | [Wires](https://www.amazon.com/dp/B089CW7YSR?pd_rd_i=B089CW7YSR&pf_rd_p=b000e0a0-9e93-480f-bf78-a83c8136dfcb&pf_rd_r=8B86DRBHDEJC4SYYT888&pd_rd_wg=4Wd7g&pd_rd_w=4t96m&pd_rd_r=5f34472d-bc69-4de1-86aa-3c0156c27afe) | $30 |
-| [A](A) | $- |
-| [A](A) | $- |
-| Air Flow Valves | $- |
+| [Pneumatic Tubing](https://www.amazon.com/CGELE-Pneumatic-Transfer-OD-39-4Ft-12Meter/dp/B09KBM3J5K/ref=sr_1_1_sspa?keywords=Pneumatic+Tube&qid=1670366685&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExMVVaWFFPQjhJS0pGJmVuY3J5cHRlZElkPUEwMTcxMTc5MUJJOUEySEpTVFJaWCZlbmNyeXB0ZWRBZElkPUEwMjExOTk4MkJMWkg2TlFIUThFWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) | $14 |
+| [Wood Blocks](https://www.amazon.com/Bright-Creations-Unfinished-Blocks-Crafts/dp/B07R51CY99/ref=sr_1_5?crid=13N7GZHNDFMRS&keywords=small+blocks+of+wood&qid=1670366923&sprefix=small+blocks+of+woo%2Caps%2C170&sr=8-5) | $12 |
+| [Metal Wire](https://www.amazon.com/TecUnite-Aluminum-Bendable-Skeleton-Thickness/dp/B07CQL7Y5B/ref=sr_1_3?crid=4TP4FYQVNJLY&keywords=stiff+wire&qid=1670367186&sprefix=stiff+wir%2Caps%2C295&sr=8-3) | $13 |
+| [Metal Bracket](https://www.amazon.com/5pcs-Metal-Bracket-Wide-40x50x50mm/dp/B0BK9XYNDS/ref=sr_1_1_sspa?crid=232P5B5KUCQOI&keywords=metal+bracket+wide&qid=1670367623&sprefix=metal+bracket+wid%2Caps%2C311&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzQzlOVEhSSkRaVU8yJmVuY3J5cHRlZElkPUEwNDQwNDkyM0pKRlpRQkJYQTg2MyZlbmNyeXB0ZWRBZElkPUEwNTEzNzUxMkhUQlBTR0hCSVFXSiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) | $15 |
+| [Sheet Metal](https://www.amazon.com/Sheet-Metal-Stock-Made-USA/dp/B000H5W3PI/ref=sr_1_3?crid=1IEIUU65EOGGF&keywords=sheet+metal&qid=1670367508&s=industrial&sprefix=sheet+meta%2Cindustrial%2C140&sr=1-3) | $7 |
 
 
 ### Future Work
@@ -187,6 +189,9 @@ This section provides some ideas for you to build upon my version. They're just 
 - Bluetooth speakers
 - External antenna
 - Fan to keep relay board cool with a temperature sensor dedicated to the relay board
+- Better website design
+- Solar panel to charge the battery
+- Battery monitor for solar panel
 
 
 ### Acknowledgments
