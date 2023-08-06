@@ -2,7 +2,7 @@
 
 ![Shed](Images/shed.jpg)
 
-The IoT Shed is a project focused on adding automation to an ordinary shed. The project includes remote light control, cooling the inside of the shed, and a website to control and monitor information remotely. My goal for this project was to help my dad automate some tasks in his shed while using skills that I learned from a course I recently took at Arizona State University, Programming for the Internet of Things.
+The IoT Shed is a project focused on adding automation to an ordinary shed. Please watch this short [demonstration](https://youtu.be/3eUKjTSdYpM). The project includes remote light control, cooling the inside of the shed, and a website to control and monitor information remotely. My goal for this project was to help my dad automate some tasks in his shed while using skills that I learned from a course I recently took at Arizona State University, Programming for the Internet of Things.
 
 This repository includes everything needed to make this project on your own. Please feel free to fork the code and schematics and make your own version. If you do, then please share your final version with me! I'd love to see how you improved upon my design for your own shed. I included a [future work](#future-work) section to provide some ideas.
 
